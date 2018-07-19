@@ -2,19 +2,24 @@ import React, { Component } from "react";
 import { Route, Switch } from 'react-router-dom';
 
 // components
-import './index.css';
-import App from './App';
+// import './index.css';
+// import App from './App';
+import rootLayout from './container/layout';
 
 export default class Router extends Component {
   render() {
-    return <div id="wrapper">
-      <Switch>
-        <Route exact path='/' component={App} />
-        {/* <Route path='/about' component={About} />
-        <Route path='/contact' component={Contact} /> */}
-        {/* when none of the above match, <NoMatch> will be rendered */}
-        {/* <Route component={NoMatch} /> */}
-      </Switch>
-    </div>
+    if (true) {
+      return (
+        <div id="router">
+          <Route component={rootLayout} />
+        </div>
+      );
+    } else {
+      return (
+        <div id="login">
+
+        </div>
+      );
+    }
   }
 }
