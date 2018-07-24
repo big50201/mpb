@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom'
-import { Layout, Menu, Icon } from 'antd';
+import React, { Component } from "react";
+import { Route, Switch, Link } from "react-router-dom"
+import { connect } from "react-redux";
+import { Layout, Menu, Icon, Avatar } from 'antd';
 
 // components
 import Welcome from '../components/welcome';
@@ -9,9 +10,38 @@ import VideoCamera from '../components/videoCamera';
 import Upload from '../components/upload';
 import CustomUser from '../components/customUser';
 
+// containers
+import CustomBreadcrumb from './breadcrumb';
+
 const { Header, Footer, Sider, Content } = Layout;
 
-export default class rootLayout extends Component {
+const mapStateToProps = state => {
+  return { keys: state.layout.keys }
+}
+// action creator in container
+const mapDispatchToProps = dispatch => ({
+  onClick: (keys) => {
+    dispatch({
+      type: "SET_SELECTED_KEYS",
+      keys: keys
+    })
+  },
+});
+
+class rootLayout extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedKeys: props.keys,
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      selectedKeys: nextProps.keys,
+    })
+  }
+
   render() {
     return (
       <div className="rootLayout">
@@ -22,27 +52,32 @@ export default class rootLayout extends Component {
             onBreakpoint={(broken) => { console.log(broken); }}
             onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
           >
-            <div className="logo" />
-            <Menu theme="dark" mode="inline">
-              <Menu.Item key="1">
+            <Menu theme="dark" mode="inline" selectedKeys={this.state.selectedKeys} onClick={x => this.props.onClick([].concat(x.key))}>
+              <Menu.Item key="home">
+                <Link to="/">
+                  <Icon type="home" />
+                  <span className="nav-text">home</span>
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="user">
                 <Link to="/user">
                   <Icon type="user" />
                   <span className="nav-text">user</span>
                 </Link>
               </Menu.Item>
-              <Menu.Item key="2">
+              <Menu.Item key="videoCamera">
                 <Link to="/videoCamera">
                   <Icon type="video-camera" />
                   <span className="nav-text">video-camera</span>
                 </Link>
               </Menu.Item>
-              <Menu.Item key="3">
+              <Menu.Item key="upload">
                 <Link to="/upload">
                   <Icon type="upload" />
                   <span className="nav-text">upload</span>
                 </Link>
               </Menu.Item>
-              <Menu.Item key="4">
+              <Menu.Item key="customUser">
                 <Link to="/customUser">
                   <Icon type="user" />
                   <span className="nav-text">customUser</span>
@@ -51,7 +86,17 @@ export default class rootLayout extends Component {
             </Menu>
           </Sider>
           <Layout>
-            <Header style={{ background: '#fff', padding: 0 }} />
+            <Header style={{ background: '#fff', padding: 0 }}>
+              <div className="navigation">
+                <span className="breadcrumb">
+                  <CustomBreadcrumb />
+                </span>
+                <span className="avatar">
+                  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                </span>
+              </div>
+
+            </Header>
             <Content style={{ margin: '24px 16px 0' }}>
               <Switch>
                 <Route exact path="/" component={Welcome} />
@@ -70,3 +115,7 @@ export default class rootLayout extends Component {
     );
   }
 }
+
+const CustomLayout = connect(mapStateToProps, mapDispatchToProps)(rootLayout);
+
+export default CustomLayout;

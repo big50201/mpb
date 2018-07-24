@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Route, Switch } from 'react-router-dom';
+import { Route } from "react-router-dom";
 
 // components
 // import './index.css';
 // import App from './App';
-import rootLayout from './container/layout';
+import rootLayout from './containers/layout';
 
 export default class Router extends Component {
   render() {

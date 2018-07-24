@@ -1,9 +1,22 @@
-import { createStore, applyMiddleware } from 'redux'
+import {
+  combineReducers,
+  createStore,
+  applyMiddleware
+} from 'redux'
+
+// reducers
+import layout from './reducers/layout';
+
+// middlewares
 import logger from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 
-import reducer from './reducers/sample'
-import mySaga from './sagas/sagas'
+import layoutSaga from './sagas/layout'
+
+// combine reducers
+const reducer = combineReducers({
+  layout,
+});
 
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
@@ -14,6 +27,6 @@ const store = createStore(
 )
 
 // then run the saga
-sagaMiddleware.run(mySaga)
+sagaMiddleware.run(layoutSaga)
 
 export default store

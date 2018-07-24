@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider, connect } from "react-redux";
+import { Provider } from "react-redux";
 import { BrowserRouter } from 'react-router-dom';
 
 // redux
@@ -9,16 +9,20 @@ import store from "./store";
 // vendor
 import 'antd/dist/antd.css';
 
-// componenets
+// containers
 import Router from './router';
+
+// stylesheets
+import "./stylesheets/style.scss";
 
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
+  <Provider store={store}>
+    <BrowserRouter>
       <Router />
-    </Provider>
-  </BrowserRouter>
+    </BrowserRouter>
+  </Provider>
   , document.getElementById('root'));
+
 registerServiceWorker();
