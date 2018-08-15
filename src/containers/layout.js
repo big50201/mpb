@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch, Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { Layout, Menu, Icon, Avatar } from 'antd';
+import { FormattedMessage } from 'react-intl';
+import { Layout, Menu, Icon, Avatar, Dropdown, message } from 'antd';
 
 // components
 import Welcome from '../components/welcome';
@@ -39,6 +40,34 @@ class rootLayout extends Component {
     this.setState({
       selectedKeys: nextProps.keys,
     })
+  }
+
+  menu = (
+    <Menu onClick={this.handleMenuClick}>
+      <Menu.Item key="1"><Icon type="profile" />
+        <FormattedMessage
+            id="avatar.profile"
+            defaultMessage="profile"
+        />
+      </Menu.Item>
+      <Menu.Item key="2"><Icon type="setting" />
+        <FormattedMessage
+            id="avatar.settings"
+            defaultMessage="settings"
+        />
+      </Menu.Item>
+      <Menu.Item key="3"><Icon type="logout" />
+        <FormattedMessage
+            id="avatar.logout"
+            defaultMessage="logout"
+        />
+      </Menu.Item>
+    </Menu>
+  );
+
+  handleMenuClick(e) {
+    message.info('Click on menu item.');
+    console.log('click', e);
   }
 
   render() {
@@ -91,7 +120,9 @@ class rootLayout extends Component {
                   <CustomBreadcrumb />
                 </span>
                 <span className="avatar">
-                  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                  <Dropdown overlay={this.menu}>
+                    <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                  </Dropdown>
                 </span>
               </div>
 
