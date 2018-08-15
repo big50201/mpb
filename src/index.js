@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 // redux
-import store from "./store";
+import store from './store';
 
 // vendor
 import 'antd/dist/antd.css';
@@ -13,7 +13,7 @@ import 'antd/dist/antd.css';
 import Router from './router';
 
 // stylesheets
-import "./stylesheets/style.scss";
+import './stylesheets/style.scss';
 
 import registerServiceWorker from './registerServiceWorker';
 

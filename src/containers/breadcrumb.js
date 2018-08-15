@@ -1,7 +1,10 @@
-import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { Breadcrumb } from 'antd';
+
+// actions
+import { setSelectedKeys } from '../reducers/layout'
 
 // todo: load from json
 const breadcrumbNameMap = {
@@ -12,20 +15,15 @@ const breadcrumbNameMap = {
   '/customUser': 'CustomUser',
 };
 
-// action creator in container
 const mapDispatchToProps = dispatch => ({
   onClick: (keys) => {
-    dispatch({
-      type: "SET_SELECTED_KEYS",
-      keys: keys
-    })
+    dispatch(setSelectedKeys(keys))
   },
 });
 
 class rootBreadcrumb extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       location: props.location,
     };

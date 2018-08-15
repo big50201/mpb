@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Route, Switch, Link } from "react-router-dom"
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { Route, Switch, Link } from 'react-router-dom'
+import { connect } from 'react-redux';
 import { Layout, Menu, Icon, Avatar } from 'antd';
 
 // components
@@ -13,18 +13,17 @@ import CustomUser from '../components/customUser';
 // containers
 import CustomBreadcrumb from './breadcrumb';
 
+// actions
+import { setSelectedKeys } from '../reducers/layout'
+
 const { Header, Footer, Sider, Content } = Layout;
 
 const mapStateToProps = state => {
   return { keys: state.layout.keys }
 }
-// action creator in container
 const mapDispatchToProps = dispatch => ({
   onClick: (keys) => {
-    dispatch({
-      type: "SET_SELECTED_KEYS",
-      keys: keys
-    })
+    dispatch(setSelectedKeys(keys))
   },
 });
 
@@ -52,7 +51,7 @@ class rootLayout extends Component {
             onBreakpoint={(broken) => { console.log(broken); }}
             onCollapse={(collapsed, type) => { console.log(collapsed, type); }}
           >
-            <Menu theme="dark" mode="inline" selectedKeys={this.state.selectedKeys} onClick={x => this.props.onClick([].concat(x.key))}>
+            <Menu theme="dark" mode="inline" selectedKeys={this.state.selectedKeys} onClick={item => this.props.onClick([].concat(item.key))}>
               <Menu.Item key="home">
                 <Link to="/">
                   <Icon type="home" />

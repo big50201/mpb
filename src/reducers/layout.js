@@ -1,3 +1,11 @@
+// Action Creators
+export function setSelectedKeys(keys) {
+  return {
+    type: 'SET_SELECTED_KEYS',
+    keys: keys
+  }
+}
+
 // Reducer
 export default function layout(
   state = {
