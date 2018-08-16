@@ -7,15 +7,6 @@ import { Breadcrumb } from 'antd';
 // actions
 import { setSelectedKeys } from '../reducers/layout'
 
-// todo: load from json
-const breadcrumbNameMap = {
-  '/home': 'home',
-  '/users': 'users',
-  '/channels': 'channels',
-  '/brands': 'brands',
-  '/statistics': 'statistics',
-};
-
 const mapDispatchToProps = dispatch => ({
   onClick: (keys) => {
     dispatch(setSelectedKeys(keys))
@@ -43,24 +34,23 @@ class rootBreadcrumb extends React.Component {
     const url = `/${this.pathSnippets().slice(0, index + 1).join('/')}`;
     const selectedKey = `${this.pathSnippets().slice(index, index + 1)}`;
     return (
-      <Breadcrumb.Item key={url}>
+      <Breadcrumb.Item key={selectedKey}>
         <Link to={url} onClick={(e) => {
-          e.preventDefault()
           this.props.onClick([].concat(selectedKey))}}>
           <FormattedMessage
-            id={`menu.${breadcrumbNameMap[url]}`}
-            defaultMessage={`${breadcrumbNameMap[url]}`}
+            id={`menu.${selectedKey}`}
+            defaultMessage={`${selectedKey}`}
           />
         </Link>
       </Breadcrumb.Item>
     );
   });
   breadcrumbItems = () => [(
-    <Breadcrumb.Item key="/home">
-      <Link to="/" onClick={() => this.props.onClick(['home'])} >
+    <Breadcrumb.Item key="home">
+      <Link to="/" onClick={() => this.props.onClick(['home'])}>
         <FormattedMessage
-          id={`menu.${breadcrumbNameMap['/home']}`}
-          defaultMessage={`${breadcrumbNameMap['/home']}`}
+          id="menu.home"
+          defaultMessage="home"
         />
       </Link>
     </Breadcrumb.Item>

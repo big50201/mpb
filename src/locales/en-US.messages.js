@@ -8,4 +8,7 @@ export default {
   "menu.channels": "channels",
   "menu.brands": "brands",
   "menu.statistics": "statistics",
+  "user.table.columns.name": "Name",
+  "user.table.columns.age": "Age",
+  "user.table.columns.address": "Address",
 };

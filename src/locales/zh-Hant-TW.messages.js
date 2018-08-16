@@ -8,4 +8,7 @@ export default {
   "menu.channels": "渠道",
   "menu.brands": "品牌",
   "menu.statistics": "統計",
+  "user.table.columns.name": "姓名",
+  "user.table.columns.age": "年齡",
+  "user.table.columns.address": "住址",
 };
