@@ -5,11 +5,11 @@ import { FormattedMessage } from 'react-intl';
 import { Layout, Menu, Icon, Avatar, Dropdown, message } from 'antd';
 
 // components
-import Welcome from '../components/welcome';
-import User from '../components/user';
-import VideoCamera from '../components/videoCamera';
-import Upload from '../components/upload';
-import CustomUser from '../components/customUser';
+import Home from '../components/home';
+import Users from '../components/users';
+import Channels from '../components/channels';
+import Brands from '../components/brands';
+import Statistics from '../components/statistics';
 
 // containers
 import CustomBreadcrumb from './breadcrumb';
@@ -84,31 +84,46 @@ class rootLayout extends Component {
               <Menu.Item key="home">
                 <Link to="/">
                   <Icon type="home" />
-                  <span className="nav-text">home</span>
+                  <FormattedMessage
+                      id="menu.home"
+                      defaultMessage="home"
+                  />
                 </Link>
               </Menu.Item>
-              <Menu.Item key="user">
-                <Link to="/user">
+              <Menu.Item key="users">
+                <Link to="/users">
                   <Icon type="user" />
-                  <span className="nav-text">user</span>
+                  <FormattedMessage
+                      id="menu.users"
+                      defaultMessage="users"
+                  />
                 </Link>
               </Menu.Item>
-              <Menu.Item key="videoCamera">
-                <Link to="/videoCamera">
-                  <Icon type="video-camera" />
-                  <span className="nav-text">video-camera</span>
+              <Menu.Item key="channels">
+                <Link to="/channels">
+                  <Icon type="fork" />
+                  <FormattedMessage
+                      id="menu.channels"
+                      defaultMessage="channels"
+                  />
                 </Link>
               </Menu.Item>
-              <Menu.Item key="upload">
-                <Link to="/upload">
-                  <Icon type="upload" />
-                  <span className="nav-text">upload</span>
+              <Menu.Item key="brands">
+                <Link to="/brands">
+                  <Icon type="trademark" />
+                  <FormattedMessage
+                      id="menu.brands"
+                      defaultMessage="brands"
+                  />
                 </Link>
               </Menu.Item>
-              <Menu.Item key="customUser">
-                <Link to="/customUser">
-                  <Icon type="user" />
-                  <span className="nav-text">customUser</span>
+              <Menu.Item key="statistics">
+                <Link to="/statistics">
+                  <Icon type="area-chart" />
+                  <FormattedMessage
+                      id="menu.statistics"
+                      defaultMessage="statistics"
+                  />
                 </Link>
               </Menu.Item>
             </Menu>
@@ -129,15 +144,15 @@ class rootLayout extends Component {
             </Header>
             <Content style={{ margin: '24px 16px 0' }}>
               <Switch>
-                <Route exact path="/" component={Welcome} />
-                <Route exact path="/user" component={User} />
-                <Route exact path="/videoCamera" component={VideoCamera} />
-                <Route exact path="/upload" component={Upload} />
-                <Route exact path="/customUser" component={CustomUser} />
+                <Route exact path="/" component={Home} />
+                <Route exact path="/users" component={Users} />
+                <Route exact path="/channels" component={Channels} />
+                <Route exact path="/brands" component={Brands} />
+                <Route exact path="/statistics" component={Statistics} />
               </Switch>
             </Content>
             <Footer style={{ textAlign: 'center' }}>
-              Ant Design ©2016 Created by Ant UED
+              Neverland 2018 by layman
             </Footer>
           </Layout>
         </Layout>
