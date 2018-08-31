@@ -11,7 +11,7 @@ import layout from './reducers/layout';
 import logger from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 
-import rootSaga from './sagas/layout'
+import rootSaga from './sagas/rootSaga'
 
 // combine reducers
 const reducer = combineReducers({

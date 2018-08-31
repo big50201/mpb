@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 // components
-// import './index.css';
-// import App from './App';
 import rootLayout from './containers/layout';
+import login from './containers/login';
 
 export default class Router extends Component {
   render() {
-    if (true) {
+    if (localStorage.token) {
       return (
         <div id="router">
           <Route component={rootLayout} />
@@ -17,7 +16,7 @@ export default class Router extends Component {
     } else {
       return (
         <div id="login">
-
+          <Route component={login} />
         </div>
       );
     }

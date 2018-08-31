@@ -1,4 +1,13 @@
 export default {
+  "usernamePlaceholder": "請輸入使用者名稱!",
+  "username": "使用者名稱",
+  "passwordPlaceholder": "請輸入密碼!",
+  "password": "密碼",
+  "rememberMe": "記住帳號",
+  "forgetPassword": "忘記密碼",
+  "logIn": "登入",
+  "or": "或",
+  "registerNow": "現在註冊",
   "App.hello": "哈囉",
   "avatar.profile": "個人資料",
   "avatar.settings": "設定",

@@ -1,4 +1,13 @@
 export default {
+  "usernamePlaceholder": "Please input your username!",
+  "username": "Username",
+  "passwordPlaceholder": "Please input your Password!",
+  "password": "Password",
+  "rememberMe": "Remember me",
+  "forgetPassword": "Forgot password",
+  "logIn": "Log in",
+  "or": "Or",
+  "registerNow": "register now!",
   "App.hello": "hello",
   "avatar.profile": "profile",
   "avatar.settings": "settings",
