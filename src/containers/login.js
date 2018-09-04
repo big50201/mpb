@@ -3,11 +3,8 @@ import { connect } from 'react-redux';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { i18n } from '../tools/i18n';
 
-// actions
-// import { getJWT } from '../reducers/login'
-
 const FormItem = Form.Item;
-const { language = 'en' } = localStorage;
+const { language = 'zh' } = localStorage;
 
 const mapDispatchToProps = dispatch => ({
   getJWT: (username, password, history) => {

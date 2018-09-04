@@ -8,6 +8,8 @@
 - [react-redux](#react-redux)
 - [axios](#axios)
 - [ant design](#ant-design)
+- [chart.js](#chart.js)
+  - [react-chartjs-2](#react-chartjs-2)
 
 ## `react router`
 
@@ -58,3 +60,18 @@ https://github.com/axios/axios
 
 可參考以下教學網址：
 https://ant.design/docs/react/introduce-cn
+
+## `chart.js`
+
+目前最多使用者的js圖表套件
+
+可參考以下教學網址：
+http://www.chartjs.org/docs/latest/
+
+### `react-chartjs-2`
+
+用react集成的chartjs<br>
+主要是將chartjs包成component的形式來方便使用
+
+可參考以下教學網址：
+https://github.com/jerairrest/react-chartjs-2
