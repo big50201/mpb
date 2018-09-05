@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom'
+import { Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
+import axios from 'axios';
 import { Layout, Menu, Icon, Avatar, Dropdown, message, Spin } from 'antd';
 
 // components
@@ -15,9 +16,62 @@ import Statistics from '../components/statistics';
 import CustomBreadcrumb from './breadcrumb';
 
 // actions
-import { setSelectedKeys } from '../reducers/layout'
+import { setSelectedKeys } from '../reducers/layout';
+
+// fake json data
+import userData from '../json/user.json';
+import statisticsData from '../json/statistics.json';
 
 const { Header, Footer, Sider, Content } = Layout;
+
+// wrapping/composing  todo:fadein effect
+const UsersRoute = ({...rest}) => {
+  // axios.get("")
+  //   .then((res) => {
+  //     return (
+  //       <Route {...rest} render={props => (
+  //           <Users {...props} data={res.data} />
+  //       )}/>
+  //     )
+  //   })
+  //   .catch(function (error) {
+  //     // handle error
+  //     console.log(error);
+  //   })
+  //   .finally(function () {
+  //     // always executed
+  //   });
+
+  return (
+    <Route {...rest} render={() => (
+      <Users data={userData} />
+    )}/>
+  )
+}
+
+const StatisticsRoute = ({...rest}) => {
+  // axios.get("")
+  //   .then((res) => {
+  //     return (
+  //       <Route {...rest} render={props => (
+  //           <Users {...props} data={res.data} />
+  //       )}/>
+  //     )
+  //   })
+  //   .catch(function (error) {
+  //     // handle error
+  //     console.log(error);
+  //   })
+  //   .finally(function () {
+  //     // always executed
+  //   });
+
+  return (
+    <Route {...rest} render={() => (
+      <Statistics data={statisticsData} />
+    )}/>
+  )
+}
 
 const mapStateToProps = state => {
   return { keys: state.layout.keys }
@@ -36,7 +90,7 @@ class rootLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedKeys: props.keys,
+      selectedKeys: props.location.pathname.replace('/', '') !== '' ? [props.location.pathname.replace('/', '')] : ['home'],
       loading: true
     };
   }
@@ -159,10 +213,10 @@ class rootLayout extends Component {
               <Content style={{ margin: '24px 16px 0' }}>
                 <Switch>
                   <Route exact path="/" component={Home} />
-                  <Route exact path="/users" component={Users} />
+                  <UsersRoute exact path="/users" />
                   <Route exact path="/channels" component={Channels} />
                   <Route exact path="/brands" component={Brands} />
-                  <Route exact path="/statistics" component={Statistics} />
+                  <StatisticsRoute exact path="/statistics" />
                 </Switch>
               </Content>
               <Footer style={{ textAlign: 'center' }}>
