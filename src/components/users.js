@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from 'antd';
 import { i18n } from '../tools/i18n';
+import Fade from './fade';
 
 const { language = 'en' } = localStorage;
 const columns = [{
@@ -29,7 +30,9 @@ const rowSelection = {
 const Users = (props) => {
   return (
     <div className="users" style={{ padding: 24, background: '#fff', minHeight: 600 }}>
-      <Table rowSelection={rowSelection} columns={columns} dataSource={props.data} />
+      <Fade in={props.fade}>
+        <Table rowSelection={rowSelection} columns={columns} dataSource={props.data} />
+      </Fade>
     </div>
   );
 };

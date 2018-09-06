@@ -24,8 +24,8 @@ import statisticsData from '../json/statistics.json';
 
 const { Header, Footer, Sider, Content } = Layout;
 
-// wrapping/composing  todo:fadein effect
-const UsersRoute = ({...rest}) => {
+// wrapping/composing
+const UsersRoute = ({fade, ...rest}) => {
   // axios.get("")
   //   .then((res) => {
   //     return (
@@ -44,7 +44,7 @@ const UsersRoute = ({...rest}) => {
 
   return (
     <Route {...rest} render={() => (
-      <Users data={userData} />
+      <Users fade={fade} data={userData} />
     )}/>
   )
 }
@@ -91,14 +91,16 @@ class rootLayout extends Component {
     super(props);
     this.state = {
       selectedKeys: props.location.pathname.replace('/', '') !== '' ? [props.location.pathname.replace('/', '')] : ['home'],
-      loading: true
+      loading: true,
+      fade: false
     };
   }
 
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        loading: false
+        loading: false,
+        fade: true
       })
     }, 1000);
   }
@@ -213,7 +215,7 @@ class rootLayout extends Component {
               <Content style={{ margin: '24px 16px 0' }}>
                 <Switch>
                   <Route exact path="/" component={Home} />
-                  <UsersRoute exact path="/users" />
+                  <UsersRoute fade={this.state.fade} exact path="/users" />
                   <Route exact path="/channels" component={Channels} />
                   <Route exact path="/brands" component={Brands} />
                   <StatisticsRoute exact path="/statistics" />
