@@ -106,10 +106,26 @@ class rootLayout extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      selectedKeys: nextProps.keys,
-    })
+    if (nextProps.keys !== this.state.keys) {
+      this.setState({
+        selectedKeys: nextProps.keys,
+      });
+    }
   }
+
+  // will replace componentWillReceiveProps in React 17
+  // static getDerivedStateFromProp(nextProps, prevState) {
+  //   console.log(nextProps.selectedKeys);
+  //   console.log(prevState.selectedKeys);
+
+  //   if (nextProps.selectedKeys !== prevState.selectedKeys) {
+  //     return {
+  //       selectedKeys: nextProps.selectedKeys
+  //     };
+  //   }
+
+  //   return null;
+  // }
 
   menu = (
     <Menu onClick={() => this.props.onClickLogout(this.props.history)}>

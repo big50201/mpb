@@ -22,10 +22,26 @@ class rootBreadcrumb extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      location: nextProps.location,
-    })
+    if (nextProps.location !== this.state.location) {
+      this.setState({
+        location: nextProps.location,
+      });
+    }
   }
+
+  // will replace componentWillReceiveProps in React 17
+  // static getDerivedStateFromProp(nextProps, prevState) {
+  //   console.log(nextProps.location);
+  //   console.log(prevState.location);
+
+  //   if (nextProps.location !== prevState.location) {
+  //     return {
+  //       location: nextProps.location
+  //     };
+  //   }
+
+  //   return null;
+  // }
 
   pathSnippets = () => {
     return this.state.location.pathname.split('/').filter(i => i);
